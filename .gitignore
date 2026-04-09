@@ -1,0 +1,45 @@
+# OS
+.DS_Store
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+
+# Local env files
+.env
+.env.*
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Test and tooling cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Notebook
+.ipynb_checkpoints/
+
+# IDE/editor
+.idea/
+.vscode/
+
+# Logs/temp
+*.log
+tmp/
+.temp/
+
+# uv
+uv.lock
