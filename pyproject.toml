@@ -1,0 +1,39 @@
+[project]
+name = "agents-tutorial"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+authors = [
+    { name = "lihanghang", email = "lihanghang@guazi.com" }  # 对象格式，符合新版规范
+]
+dependencies = [
+    "aioconsole>=0.8.2",
+    "langfuse>=3.7.0",
+    "openai>=1.55.3",
+    "pillow>=11.3.0",
+    "pyzmq>=25.1.2",
+    "requests>=2.32.5",
+    "tavily-python>=0.7.23",
+    "torch>=2.8.0",
+]
+
+[tool.poetry.dependencies]
+aiohttp = "3.9.1"
+urllib3 = "1.26.6"
+orjson = ">=3.9.14,<4.0.0"
+uuid = "^1.30"
+
+[tool.poetry]
+packages = [
+    { include = "agents_tutorial" },
+    { include = "sglang_demo" },
+]
+
+[[tool.poetry.source]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple/"
+priority = "primary"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
