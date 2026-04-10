@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Debug agents_tutorial/auto_gen/demo.py",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/agents_tutorial/auto_gen/demo.py",
+      "cwd": "${workspaceFolder}",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

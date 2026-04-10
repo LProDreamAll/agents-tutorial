@@ -3,14 +3,10 @@
   "python.terminal.activateEnvironment": true,
   "editor.formatOnSave": true,
   "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.ruff": "explicit",
-      "source.organizeImports.ruff": "explicit"
-    }
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
   },
-  "ruff.nativeServer": "on",
+  "black-formatter.importStrategy": "fromEnvironment",
   "code-runner.executorMap": {
     "python": "${workspaceFolder}/.venv/bin/python"
   }
