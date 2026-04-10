@@ -7,6 +7,7 @@ authors = [
     { name = "lihanghang", email = "lihanghang@guazi.com" }  # 对象格式，符合新版规范
 ]
 dependencies = [
+    "agentscope>=1.0.18",
     "aioconsole>=0.8.2",
     "autogen>=0.11.5",
     "autogen-agentchat>=0.7.5",
@@ -15,6 +16,7 @@ dependencies = [
     "langfuse>=3.7.0",
     "openai>=1.55.3",
     "pillow>=11.3.0",
+    "pydantic>=2.12.5",
     "python-dotenv>=1.2.2",
     "pyzmq>=25.1.2",
     "requests>=2.32.5",
