@@ -10,3 +10,64 @@ Reflection 机制的灵感来源于人类的学习过程：我们完成初稿后
 优化 (Refinement)：最后，智能体将“初稿”和“反馈”作为新的上下文，再次调用大语言模型，要求它根据反馈内容对初稿进行修正，生成一个更完善的“修订稿”。
 
 """
+
+from typing import Any, Dict, List, Optional
+
+
+class Memory:
+    """
+    一个简单的短期记忆模块，用于存储智能体的行动与反思轨迹。
+    """
+
+    def __init__(self):
+        """
+        初始化一个空列表来存储所有记录。
+        """
+        self.records: List[Dict[str, Any]] = []
+
+    def add_record(self, record_type: str, content: str):
+        """
+        向记忆中添加一条新记录。
+
+        参数:
+        - record_type (str): 记录的类型 ('execution' 或 'reflection')。
+        - content (str): 记录的具体内容 (例如，生成的代码或反思的反馈)。
+        """
+        record = {"type": record_type, "content": content}
+        self.records.append(record)
+        print(f"📝 记忆已更新，新增一条 '{record_type}' 记录。")
+
+    def get_trajectory(self) -> str:
+        """
+        将所有记忆记录格式化为一个连贯的字符串文本，用于构建提示词。
+        """
+        trajectory_parts = []
+        for record in self.records:
+            if record["type"] == "execution":
+                trajectory_parts.append(
+                    f"--- 上一轮尝试 (代码) ---\n{record['content']}"
+                )
+            elif record["type"] == "reflection":
+                trajectory_parts.append(f"--- 评审员反馈 ---\n{record['content']}")
+
+        return "\n\n".join(trajectory_parts)
+
+    def get_last_execution(self) -> Optional[str]:
+        """
+        获取最近一次的执行结果 (例如，最新生成的代码)。
+        如果不存在，则返回 None。
+        """
+        for record in reversed(self.records):
+            if record["type"] == "execution":
+                return record["content"]
+        return None
+
+
+INITIAL_PROMPT_TEMPLATE = """
+你是一位资深的Python程序员。请根据以下要求，编写一个Python函数。
+你的代码必须包含完整的函数签名、文档字符串，并遵循PEP 8编码规范。
+
+要求: {task}
+
+请直接输出代码，不要包含任何额外的解释。
+"""

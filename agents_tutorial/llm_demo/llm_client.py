@@ -28,7 +28,7 @@ class HelloAgentsLLM:
 
         self.client = OpenAI(api_key=apiKey, base_url=baseUrl, timeout=timeout)
 
-    def think(self, messages: List[ChatCompletionMessageParam], temperature: float = 0) -> str:
+    def think(self, messages: List[ChatCompletionMessageParam], temperature: float = 0) -> str | None:
         """
         调用大语言模型进行思考，并返回其响应。
         """
@@ -58,6 +58,9 @@ class HelloAgentsLLM:
             print()  # 在流式输出结束后换行
             return "".join(collected_content)
 
+        except KeyboardInterrupt:
+            print("\n⏹️ 已取消本次流式输出（KeyboardInterrupt）。")
+            return None
         except Exception as e:
             print(f"❌ 调用LLM API时发生错误: {e}")
             return None

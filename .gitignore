@@ -34,7 +34,6 @@ htmlcov/
 
 # IDE/editor
 .idea/
-.vscode/
 
 # Logs/temp
 *.log
